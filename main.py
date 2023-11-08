@@ -1,27 +1,18 @@
-import os
-from dotenv import load_dotenv
 import streamlit as st
 from langchain.llms import OpenAI
 
-# Load environment variables from .env file
-load_dotenv()
+st.title('Your Personal Assistant, throw any question at me')
 
-# Access the API key from the environment variables
-openai_api_key = os.getenv("OPENAI_API_KEY")
-
-st.title('Your Personal Assistant, throw any question at me😉')
+openai_api_key = st.sidebar.text_input('Enter your OpenAI API Key')
 
 def generate_response(input_text):
-  if openai_api_key:
-    llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
-    st.info(llm(input_text))
-  else:
-    st.warning('Please set the OPENAI_API_KEY environment variable in the .env file!', icon='⚠')
+  llm = OpenAI(temperature=0.7, openai_api_key=openai_api_key)
+  st.info(llm(input_text))
 
 with st.form('my_form'):
   text = st.text_area('Enter text:')
   submitted = st.form_submit_button('Submit')
-  if not openai_api_key:
-    st.warning('Please set the OPENAI_API_KEY environment variable in the .env file!', icon='⚠')
-  if submitted:
+  if not openai_api_key.startswith('sk-'):
+    st.warning('Please enter your OpenAI API key!', icon='⚠')
+  if submitted and openai_api_key.startswith('sk-'):
     generate_response(text)
