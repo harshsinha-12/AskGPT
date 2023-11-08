@@ -9,7 +9,7 @@ load_dotenv()
 # Access the API key from the environment variables
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-st.title('🦜🔗 Personal Assistant')
+st.title('Your Personal Assistant, throw any question at me😉')
 
 def generate_response(input_text):
   if openai_api_key:
