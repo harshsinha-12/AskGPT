@@ -1,7 +1,7 @@
 import streamlit as st
 from langchain.llms import OpenAI
 
-st.title('Your Personal Assistant, throw any question at me')
+st.title('Your Personal Assistant, throw any question at me😉')
 
 openai_api_key = st.sidebar.text_input('Enter your OpenAI API Key')
 
