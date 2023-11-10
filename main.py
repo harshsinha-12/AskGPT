@@ -20,8 +20,8 @@ with st.form('my_form'):
     text = st.text_area('Enter text:')
     submitted = st.form_submit_button('Submit')
 
-    if not openai_api_key or not openai_api_key.startswith('sk-'):
+    """if not openai_api_key or not openai_api_key.startswith('sk-'):
         st.warning('Please enter your OpenAI API key in the .env file!', icon='⚠')
 
     if submitted and openai_api_key.startswith('sk-'):
-        generate_response(text)
+        generate_response(text)"""
